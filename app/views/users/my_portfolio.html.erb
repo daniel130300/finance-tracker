@@ -21,5 +21,13 @@
 <div id="result" class="mb-3">
 </div>
 
-<%= render 'stocks/list'%>
+<% if !@tracked_stocks.empty? %>
+    <div class="row ml-1 mt-1 mb-3">
+        <%= button_to 'Refresh stock prices', refresh_stocks_path, remote:"true", method: :put, id:"refresh-btn", class: "btn btn-success" %>
+    </div>
+
+    <div id="stocks-list">
+        <%= render 'stocks/list'%>
+    </div>
+<% end %>
 
